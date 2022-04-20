@@ -1,4 +1,5 @@
 # 2C2-ESRGAN
+
 ESRGAN (Enhanced Super Resolution GAN) using two 2x2 (kernel size) conv2d layers instead of a traditional single 3x3 conv2d layer in its conv block.
 
 This idea is inspired by [this reddit post](https://www.reddit.com/r/MachineLearning/comments/u2vim0/d_replacing_3x3_convolutions_with_two_2x2/) which suggested using two 2x2 conv2d layers instead of one 3x conv2d layer when making neural network architectures. I wanted to see if this would work for Super Resolution, so I modified ESRGAN to use this type of conv block.
