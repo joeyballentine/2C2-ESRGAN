@@ -40,6 +40,20 @@ def act(act_type, inplace=True, neg_slope=0.2, n_prelu=1, beta=1.0):
     return layer
 
 
+class ShortcutBlock(nn.Module):
+    # Elementwise sum the output of a submodule to its input
+    def __init__(self, submodule):
+        super(ShortcutBlock, self).__init__()
+        self.sub = submodule
+
+    def forward(self, x):
+        output = x + self.sub(x)
+        return output
+
+    def __repr__(self):
+        return "Identity + \n|" + self.sub.__repr__().replace("\n", "\n|")
+
+
 def sequential(*args):
     # Flatten Sequential. It unwraps nn.Sequential.
     if len(args) == 1:
